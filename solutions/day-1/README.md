@@ -46,15 +46,6 @@ So, for these example lists, the similarity score at the end of this process is 
 
 Once again consider your left and right lists. What is their similarity score?
 
-Answer:
-
-Although it hasn't changed, you can still get your puzzle input.
-
-You can also [Shareon
-  Bluesky
-Twitter
-Mastodon] this puzzle.
-
 ## Examples
 
 ```text
