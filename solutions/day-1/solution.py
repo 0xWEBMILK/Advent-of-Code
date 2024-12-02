@@ -12,7 +12,6 @@ def part2(file_path: str) -> int:
     with open(file_path, 'r') as file:
         for line in file:
             pairs = (map(int, line.split()) for line in file)
-
             a, b = zip(*pairs)
 
     left = sorted(a)
