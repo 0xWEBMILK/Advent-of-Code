@@ -15,8 +15,8 @@ def part2(file_path: str) -> int:
 
             a, b = zip(*pairs)
 
-        left = sorted(a)
-        right = sorted(b)
+    left = sorted(a)
+    right = sorted(b)
 
 
     return sum([left[i] * right.count(left[i]) for i in range(len(left))])
