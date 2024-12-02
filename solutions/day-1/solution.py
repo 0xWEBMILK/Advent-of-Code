@@ -18,7 +18,6 @@ def part2(file_path: str) -> int:
     left = sorted(a)
     right = sorted(b)
 
-
     return sum([left[i] * right.count(left[i]) for i in range(len(left))])
 
 
