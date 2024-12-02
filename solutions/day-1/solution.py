@@ -9,18 +9,13 @@ def part1(file_path: str) -> int:
     return sum([abs(left[i] - right[i]) for i in range(len(left))])
 
 def part2(file_path: str) -> int:
-    left = []
-    right = []
-
     with open(file_path, 'r') as file:
         for line in file:
             pairs = (map(int, line.split()) for line in file)
-
             a, b = zip(*pairs)
 
-        left = sorted(a)
-        right = sorted(b)
-
+    left = sorted(a)
+    right = sorted(b)
 
     return sum([left[i] * right.count(left[i]) for i in range(len(left))])
 
