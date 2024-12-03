@@ -1,39 +1,31 @@
 import re
 
 def part1(file_path: str) -> int:
-    operations = []
-    result = []
+    result = 0
 
     with open(file_path, 'r') as file:
-        for line in file:
-            operations.append(re.findall(r'mul\(\d{0,999},\d{0,999}\)', line))
+        for i in re.findall(r'mul\(\d+,\d+\)', file.read()):
+            x, y = i[4:-1].split(',')
+            result += int(x) * int(y)
 
-    for i in operations:
-        for j in i:
-            result.append(int(j[4:-1].split(',')[0]) * int(j[4:-1].split(',')[1]))
-
-    return sum(result)
-
+    return result
 def part2(file_path: str) -> int:
-    operations = []
-    result = []
-    status = 1
+    result = 0
+    status = True
 
     with open(file_path, 'r') as file:
-        for line in file:
-            operations.append(re.findall(r"mul\(\d{0,999},\d{0,999}\)|do\(\)|don't\(\)", line))
-
-    for i in operations:
-        for j in i:
-            if j == 'do()':
-                status = 1
-            elif j == "don't()":
-                status = 0
+        for i in re.findall(r"mul\(\d{0,999},\d{0,999}\)|do\(\)|don't\(\)", file.read()):
+            if i == "do()":
+                status = True
+            elif i == "don't()":
+                status = False
             else:
-                if status == 1:
-                    result.append(int(j[4:-1].split(',')[0]) * int(j[4:-1].split(',')[1]))
+                if status:
+                    x, y = i[4:-1].split(',')
+                    result += int(x) * int(y)
 
-    return sum(result)
+    return result
 
 if __name__ == "__main__":
-    print(part2('./input.txt'))
+    part1('./input.txt')
+    part2('./input.txt')
